@@ -1,5 +1,5 @@
 <div align="center">
-<img src="./media/logo.svg" alt="header logo: Github Extractor" width="50%" height="50%">
+<img src="./media/logo.svg" alt="header logo: Github Extractor" width="250px" height="250px">
 </div>
 
 # Clean Components
