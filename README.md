@@ -5,10 +5,20 @@
 <br />
 
 <div align="center">
-Clean, modular, tested, highly customisable, tree-shake-able react components for everyday needs.
+    Clean, modular, tested, highly customisable, tree-shake-able react components for everyday needs.
+</div>
+<br />
+<div align="center">
+    <img src="https://img.shields.io/npm/v/clean-components?style=flat&logo=npm&color=%2366FF47" />
 </div>
 
 <br />
+
+## Install
+
+```bash
+npm i clean-components
+```
 
 ## Components
 
