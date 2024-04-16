@@ -13,17 +13,17 @@ export default defineConfig({
         minify: false,
         sourcemap: true,
         lib: {
-            entry: resolve(__dirname, "source/index.mts"),
+            entry: resolve(__dirname, "source/index.ts"),
             formats: ["es"],
         },
         rollupOptions: {
             treeshake: true,
             external: ["react", "react/jsx-runtime"], 
             input: Object.fromEntries(
-                glob.sync("source/**/*.{ts,tsx}").map(file => [
+                glob.sync("source/**/*.{ts,tsx,mts}").map(file => [
                     // get the relative path of the file
                     // source/nested/foo.ts -> nested/foo
-                    relative( "source", parse(file).name ),
+                    relative( "source", file.slice(0, file.length - extname(file).length) ),
                     // get absolute path of file
                     fileURLToPath(new URL(file, import.meta.url))
                 ])

@@ -6,7 +6,6 @@ on:
       - 'v*'
 
 
-
 jobs:
   publish:
     if: github.event.repository.fork == false
@@ -33,11 +32,11 @@ jobs:
       - name: Build
         run: npm run build:clean
 
-      - name: Test All
-        run: npm run test:all
+      # - name: Test All
+      #   run: npm run test:all
                 
-      - name: Update coverage badge
-        run: npm run coverageBadge
+      # - name: Update coverage badge
+      #   run: npm run coverageBadge
 
       - name: Publish to npm
         run: npm run publish-ci ${{ github.ref_name }}

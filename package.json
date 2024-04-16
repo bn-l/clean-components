@@ -4,6 +4,7 @@
   "description": "Clean, modular, tested, react components for everyday needs.",
   "type": "module",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -83,11 +84,16 @@
     "vite-plugin-dts": "^3.8.3",
     "vite-plugin-lib-inject-css": "^2.0.1",
     "vitest": "^1.4.0",
-    "zx": "^8.0.1"
+    "zx": "^8.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "colord": "^2.9.3"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "colord": "^2.9.3"
   },
   "dependencies": {
-    "colord": "^2.9.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
   }
 }
