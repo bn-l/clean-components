@@ -54,7 +54,7 @@ export interface KeycapProps {
 
 /**
  * Can be scaled to almost any size (will depend on the smallest font the browser will show).
- * For use in a simulated keyboard, iterate over an array of [word, char] pairs, where word is
+ * To use in a simulated keyboard, iterate over an array of [word, char] pairs, where word is
  * a word like "command" and char is an svg component (for symbol keys) or a character. 
  * Keypress visuals can be done by listening for key down and checking in the loop if the current
  * key matches the keydown key.
