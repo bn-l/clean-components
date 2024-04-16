@@ -111,10 +111,10 @@ export interface DarkModeSwitchProps {
 /**
  * By default adds a "light" or "dark" color class name to the html element when the switch is 
  * toggled. It also:
- *  - Stores this value to local storage under "theme"
- *  - Respects the user's / system darkmode preference (this is the default)
+ *  - Stores this value to localstorage using the key: "darkmodeswitch-theme"
+ *  - Respects the user's / system darkmode preference (this becomes the default starting theme)
  *  - Listens for changes to the dark mode media query and responds (e.g. if the user's os changes
- *     the preference from light to dark at a certain time of day, or vice versa).
+ *     the preference from light to dark at a certain time of day, the component will update).
  */
 export default function DarkModeSwitch({ lightColor, darkColor, onToggle, icon = true, setAddressBar = true, colors, sizeMultiple = 1 }: DarkModeSwitchProps) {
 
@@ -147,6 +147,7 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, icon =
         dropShadowDark = colord(darkColor).alpha(0.2).toHex(),
     } = colors ?? {};
 
+    const localStorageKey = "darkmodeswitch-theme"
 
     const [theme, setTheme] = useState<Theme>(Theme.Light);
     
@@ -158,12 +159,12 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, icon =
             existingClases.push(theme);
             document.documentElement.className = existingClases.join(" ").trim();
             // document.documentElement.className = theme;
-            window.localStorage.setItem("theme", theme);
+            window.localStorage.setItem(localStorageKey, theme);
         };            
          
     useEffect(() => {
 
-        const localTheme = window.localStorage.getItem("theme");
+        const localTheme = window.localStorage.getItem(localStorageKey);
         const mediaQueryDarkTheme = !!window?.matchMedia?.("(prefers-color-scheme:dark)")?.matches;
 
         let startingTheme: Theme;
