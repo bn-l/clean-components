@@ -1,10 +1,20 @@
 
-:root.dark .docs-story {
-    background-color: #1C1924 !important;
+.DarkModeSwitchCanvas {
+    --bg-dark: #1C1924;
+    --bg-light: #FBFAFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    width: 50vw;
+    background-color: #FBFAFF;
     transition: background-color 0.3s ease;
 }
 
-:root:not(.dark) .docs-story {
-    background-color: #FBFAFF !important;
-    transition: background-color 0.3s ease;
+:root.dark .DarkModeSwitchCanvas {
+    background-color: var(--bg-dark) !important;
+}
+
+:root:not(.dark) .DarkModeSwitchCanvas {
+    background-color: var(--bg-light) !important;
 }

@@ -231,7 +231,8 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, icon =
             <label className={css.switchLabel} htmlFor="checkbox">
                 <input 
                     className={css.switchInput} type="checkbox" id="checkbox" checked={theme === Theme.Light} readOnly
-                    onClick={() => changeTheme(theme === Theme.Light ? Theme.Dark : Theme.Light)} 
+                    onClick={() => changeTheme(theme === Theme.Light ? Theme.Dark : Theme.Light)}
+                    aria-label="set light or dark mode"
                 />
                 <div className={css.trackDiv}>
                     <div className={css.knobDiv}>
