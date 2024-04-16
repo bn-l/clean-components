@@ -1,5 +1,5 @@
 <div align="center">
-<img src="./media/logo-with-text.svg" alt="header logo: Clean Components" width="400px">
+<a href="https://bn-l.github.io/clean-components"><img src="./media/logo-with-text.svg" alt="header logo: Clean Components" width="400px"></a>
 </div>
 
 <br />
