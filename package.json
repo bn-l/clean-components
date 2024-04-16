@@ -1,6 +1,6 @@
 {
   "name": "clean-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Clean, modular, tested, react components for everyday needs.",
   "type": "module",
   "main": "./dist/index.js",
@@ -94,6 +94,5 @@
     "react-dom": "^18.2.0",
     "colord": "^2.9.3"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
