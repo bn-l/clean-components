@@ -10,6 +10,6 @@ Clean, modular, tested, highly customisable, tree-shake-able react components fo
 
 ### DarkModeSwitch
 
-[Demo](https://bn-l.github.io/clean-components/?path=/docs/theming-darkmodeswitch--docs)
+<a href="https://bn-l.github.io/clean-components/?path=/docs/theming-darkmodeswitch--docs" target="_blank">Demo</a> 
 
-<a href="https://bn-l.github.io/clean-components/?path=/docs/theming-darkmodeswitch--docs"><img src="./media/DarkModeSwitch.png" alt="DarkModeSwitch component screensho" height="50px"></a> 
+<a href="https://bn-l.github.io/clean-components/?path=/docs/theming-darkmodeswitch--docs" target="_blank"><img src="./media/DarkModeSwitch.png" alt="DarkModeSwitch component screenshot" height="50px"></a>
