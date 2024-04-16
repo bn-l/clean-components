@@ -72,13 +72,13 @@ export interface DarkModeSwitchColors {
 
 export interface DarkModeSwitchProps {
     /**
-     * Should be the set to the default background color for light mode. An invalid color will
-     * revert to white.
+     * Any valid css color value. Should be the set to the default background color for 
+     * light mode. An invalid color will revert to white.
      */
     lightColor: string;
     /**
-     * Should be the set to the default background color for light mode. Used for the styling
-     * defaults. An invalid color reverts to black.
+     * Any valid css color value. Should be the set to the default background color for 
+     * light mode. An invalid color will revert to black.
      */
     darkColor: string;
     /**
@@ -135,8 +135,8 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, icon =
     const { 
         iconLightColor = darkColor,
         iconDarkColor = lightColor,
-        knobLightColor = colord(darkColor).lighten(0.9).toHex(),
-        knobDarkColor = colord(lightColor).darken(0.95).toHex(),
+        knobLightColor = colord(darkColor).lighten(0.8).toHex(),
+        knobDarkColor = colord(lightColor).darken(0.9).toHex(),
         trackLightColor = colord(darkColor).toHex(),
         trackDarkColor = colord(lightColor).toHex(),
         addressBarDark = darkColor,
