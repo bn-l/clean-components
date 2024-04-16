@@ -8,6 +8,10 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bn-l/clean-components.git"
+  },
   "scripts": {
     "start:dev": "ts-node",
     "lint:style": "npx eslint --fix",
