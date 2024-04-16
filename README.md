@@ -9,7 +9,7 @@
 </div>
 <br />
 <div align="center">
-    <img src="https://img.shields.io/npm/v/clean-components?style=flat&logo=npm&color=%2366FF47" />
+    <a href="https://www.npmjs.com/package/clean-components" target="_blank"><img src="https://img.shields.io/npm/v/clean-components?style=flat&logo=npm&color=%2366FF47" /></a>
 </div>
 
 <br />
