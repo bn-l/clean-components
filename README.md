@@ -27,3 +27,9 @@ npm i clean-components
 <a href="https://bn-l.github.io/clean-components/?path=/docs/theming-darkmodeswitch--docs" target="_blank">Demo</a> 
 
 <a href="https://bn-l.github.io/clean-components/?path=/docs/theming-darkmodeswitch--docs" target="_blank"><img src="./media/DarkModeSwitch.png" alt="DarkModeSwitch component screenshot" height="50px"></a>
+
+### Keycap
+
+<a href="https://bn-l.github.io/clean-components/?path=/docs/misc-keycap--docs" target="_blank">Demo</a> 
+
+<a href="https://bn-l.github.io/clean-components/?path=/docs/misc-keycap--docs" target="_blank"><img src="./media/Keycap.png" alt="Keycap component screenshot" height="80px"></a>
