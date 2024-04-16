@@ -1,10 +1,14 @@
 <div align="center">
-<img src="./media/logo.svg" alt="header logo: Clean Components" width="250px" height="250px">
+<img src="./media/logo-with-text.svg" alt="header logo: Clean Components" width="400px">
 </div>
 
-# Clean Components
+<br />
 
-Clean, modular, tested, highly customisable, tree-shake-able react components for everyday needs
+<div align="center">
+Clean, modular, tested, highly customisable, tree-shake-able react components for everyday needs.
+</div>
+
+<br />
 
 ## Components
 
