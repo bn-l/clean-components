@@ -107,6 +107,20 @@ export interface DarkModeSwitchProps {
     colors?: DarkModeSwitchColors;
 }
 
+const localStorageKey = "darkmodeswitch-theme"
+
+function getTheme() {
+    const localTheme = window.localStorage.getItem(localStorageKey);
+    const mediaQueryDarkTheme = !!window?.matchMedia?.("(prefers-color-scheme:dark)")?.matches;
+    
+    return localTheme
+        ? localTheme as Theme
+        : mediaQueryDarkTheme
+        ? Theme.Dark
+        : Theme.Light
+}
+
+const startingTheme = getTheme();
 
 /**
  * By default adds a "light" or "dark" color class name to the html element when the switch is 
@@ -147,9 +161,7 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, icon =
         dropShadowDark = colord(darkColor).alpha(0.2).toHex(),
     } = colors ?? {};
 
-    const localStorageKey = "darkmodeswitch-theme"
-
-    const [theme, setTheme] = useState<Theme>(Theme.Light);
+    const [theme, setTheme] = useState<Theme>(startingTheme);
     
     const changeTheme: DarkModeSwitchProps["onToggle"] = onToggle ? onToggle : 
         (theme: Theme | null) => {
@@ -164,20 +176,6 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, icon =
          
     useEffect(() => {
 
-        const localTheme = window.localStorage.getItem(localStorageKey);
-        const mediaQueryDarkTheme = !!window?.matchMedia?.("(prefers-color-scheme:dark)")?.matches;
-
-        let startingTheme: Theme;
-
-        if (localTheme) {
-            startingTheme = localTheme as Theme;
-        }
-        else {
-            startingTheme = mediaQueryDarkTheme ? Theme.Dark : Theme.Light;
-        }
-           
-        changeTheme(startingTheme);
-
         // Set up theme to change event
         const handleThemeChange = (event: MediaQueryListEvent) => {
             changeTheme(event.matches ? Theme.Dark : Theme.Light);
@@ -187,10 +185,11 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, icon =
             window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", handleThemeChange);
         };
 
-    }, [changeTheme]);
+    }, []);
 
     useEffect(() => {
-
+        // Setting address bar color on macos and ios safari
+        
         const meta = document.querySelector("meta[name=\"theme-color\"]");
         if (setAddressBar) {
 
