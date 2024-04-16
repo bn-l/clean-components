@@ -176,6 +176,8 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, icon =
          
     useEffect(() => {
 
+        changeTheme(startingTheme)
+
         // Set up theme to change event
         const handleThemeChange = (event: MediaQueryListEvent) => {
             changeTheme(event.matches ? Theme.Dark : Theme.Light);
@@ -189,7 +191,7 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, icon =
 
     useEffect(() => {
         // Setting address bar color on macos and ios safari
-        
+
         const meta = document.querySelector("meta[name=\"theme-color\"]");
         if (setAddressBar) {
 
