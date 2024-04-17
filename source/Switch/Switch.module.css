@@ -42,7 +42,7 @@
     box-shadow: 0px 2px 1px var(--dropShadowColor);
     border-radius: 50%;
     background-color: var(--knobColor);
-    bottom: 0.3em;
+    bottom: 0.2em;
     content: "";
     height: 1.8em;
     left: 0.28em;
