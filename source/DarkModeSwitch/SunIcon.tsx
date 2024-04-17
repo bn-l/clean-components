@@ -1,28 +1,6 @@
 
-export interface SunIconProps {
-    /**
-     * @default none
-     */
-    className?: string;
-    /**
-     * @default "black"
-     */
-    fill?: string;
-    /**
-     * @default "16px"
-     */
-    width?: string;
-    /**
-     * @default "16px"
-     */
-    height?: string;
-    /**
-     * @default "0 0 16 16"
-     */
-    viewBox?: string;
-}
 
-export default function SunIcon(sunIconProps: SunIconProps) {
+export default function SunIcon(sunIconProps: React.SVGProps<SVGSVGElement>) {
     sunIconProps = { 
         className: "", 
         fill: "black", 
