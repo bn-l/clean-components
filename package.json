@@ -1,6 +1,6 @@
 {
   "name": "clean-components",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Clean, modular, tested, react components for everyday needs.",
   "type": "module",
   "main": "./dist/index.mjs",
