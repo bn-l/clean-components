@@ -2,11 +2,11 @@
 import css from "./DarkModeSwitch.module.css";
 import SunIcon from "./SunIcon.tsx";
 import MoonIcon from "./MoonIcon.tsx";
-import { createTheme, style } from '@vanilla-extract/css';
 
 import { useEffect, useState } from "react";
 import { colord, extend } from "colord";
 import namesPlugin from "colord/plugins/names";
+import Switch from "../Switch/Switch.tsx";
 
 
 extend([namesPlugin]);
@@ -82,9 +82,9 @@ export interface DarkModeSwitchProps {
      */
     darkColor: string;
     /**
-     * A float or int to multiply the size by (can make small or bigger);
+     * Scale in number of pixels. Default 16.
      */
-    sizeMultiple?: number;
+    scale?: number;
     /**
      * The function run when the knob is switch is clicked.
      * @default Adds a "light" or "dark" color class name to the html element.
@@ -94,7 +94,7 @@ export interface DarkModeSwitchProps {
      * Whether to show a sun / moon icon on the knob
      * @default true
      */
-    icon?: boolean;
+    showIcon?: boolean;
     /**
      * Whether to set the address color.
      * @default true
@@ -130,10 +130,8 @@ const startingTheme = getTheme();
  *  - Listens for changes to the dark mode media query and responds (e.g. if the user's os changes
  *     the preference from light to dark at a certain time of day, the component will update).
  */
-export default function DarkModeSwitch({ lightColor, darkColor, onToggle, icon = true, setAddressBar = true, colors, sizeMultiple = 1 }: DarkModeSwitchProps) {
+export default function DarkModeSwitch({ lightColor, darkColor, onToggle, showIcon = true, setAddressBar = true, colors, scale = 16 }: DarkModeSwitchProps) {
 
-    const height = sizeMultiple * 36;
-    const width = sizeMultiple * 60;
     lightColor = colord(lightColor).isValid() ? lightColor : "white";
     darkColor = colord(darkColor).isValid() ? darkColor : "black";
 
@@ -208,38 +206,43 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, icon =
     }, [addressBarDark, addressBarLight, setAddressBar, theme]);
     
 
-    const styleVars = {
-        "--knobColor": theme === Theme.Light ? knobLightColor : knobDarkColor,
-        "--trackColor": theme === Theme.Light ? trackLightColor : trackDarkColor,
-        "--detailColor": theme === Theme.Light ? detailLightColor : detailDarkColor,
-        "--dropShadow": theme === Theme.Light ? dropShadowLight : dropShadowDark,
-        "--height": `${ height }px`,
-        "--width": `${ width }px`,
-    } as React.CSSProperties;
-
     let Icon: JSX.Element | null = null;
 
-    if (icon) {
+    if (showIcon) {
         Icon = theme === Theme.Light ? 
-            <MoonIcon fill={iconLightColor} height={`${ height * 0.45 }px`} width={`${ width * 0.27 }px`} className=""/> : 
-            <SunIcon fill={iconDarkColor} height={`${ height * 0.45 }px`} width={`${ width * 0.27 }px`} className=""/>;
+            <MoonIcon fill={iconLightColor} className="" style={{height: "100%"}}/> : 
+            <SunIcon fill={iconDarkColor} className="" style={{height: "100%"}}/>;
     }
 
-    
     return (
-        <div className={css.darkModeSwitch} style={styleVars}>       
-            <label className={css.switchLabel} htmlFor="checkbox">
-                <input 
-                    className={css.switchInput} type="checkbox" id="checkbox" checked={theme === Theme.Light} readOnly
-                    onClick={() => changeTheme(theme === Theme.Light ? Theme.Dark : Theme.Light)}
-                    aria-label="set light or dark mode"
-                />
-                <div className={css.trackDiv}>
-                    <div className={css.knobDiv}>
-                        {Icon}
-                    </div>
-                </div>
-            </label>
-        </div>
-    );
+        <Switch
+            checked={theme === Theme.Light}
+            scale={scale}
+            knobColor={theme === Theme.Light ? knobLightColor : knobDarkColor}
+            onToggle={() => changeTheme(theme === Theme.Light ? Theme.Dark : Theme.Light)}
+            icon={Icon}
+            trackColor={theme === Theme.Light ? trackLightColor : trackDarkColor}
+            detailColor={theme === Theme.Light ? detailLightColor : detailDarkColor}
+            ariaLabel="Switch to set light or dark theme"
+            dropShadowColor={theme === Theme.Light ? dropShadowLight : dropShadowDark}
+        />
+    )
+
+    
+    // return (
+    //     <div className={css.darkModeSwitch} style={styleVars}>       
+    //         <label className={css.switchLabel} htmlFor="checkbox">
+    //             <input 
+    //                 className={css.switchInput} type="checkbox" id="checkbox" checked={theme === Theme.Light} readOnly
+    //                 onClick={() => changeTheme(theme === Theme.Light ? Theme.Dark : Theme.Light)}
+    //                 aria-label="set light or dark mode"
+    //             />
+    //             <div className={css.trackDiv}>
+    //                 <div className={css.knobDiv}>
+    //                     {Icon}
+    //                 </div>
+    //             </div>
+    //         </label>
+    //     </div>
+    // );
 }

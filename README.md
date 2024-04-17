@@ -22,15 +22,34 @@ npm i clean-components
 
 ## Components
 
-### DarkModeSwitch
+### Theme
+
+#### DarkModeSwitch
 
 <a href="https://bn-l.github.io/clean-components/?path=/docs/theming-darkmodeswitch--docs" target="_blank">Demo</a> 
 
 <a href="https://bn-l.github.io/clean-components/?path=/docs/theming-darkmodeswitch--docs" target="_blank"><img src="./media/DarkModeSwitch.png" alt="DarkModeSwitch component screenshot" height="50px"></a>
 
+Uses <a href="https://bn-l.github.io/clean-components/?path=/docs/ui-switch--docs" target="_blank">Switch</a>.
 
-### Keycap
+---
+
+### UI
+
+#### Switch
+
+<a href="https://bn-l.github.io/clean-components/?path=/docs/ui-switch--docs" target="_blank">Demo</a> 
+
+<a href="https://bn-l.github.io/clean-components/?path=/docs/ui-switch--docs" target="_blank"><img src="./media/Switch.png" alt="DarkModeSwitch component screenshot" height="50px"></a>
+
+---
+
+### Misc
+
+#### Keycap
 
 <a href="https://bn-l.github.io/clean-components/?path=/docs/misc-keycap--docs" target="_blank">Demo</a> 
 
 <a href="https://bn-l.github.io/clean-components/?path=/docs/misc-keycap--docs" target="_blank"><img src="./media/Keycap.png" alt="Keycap component screenshot" height="50px"></a>
+
+---

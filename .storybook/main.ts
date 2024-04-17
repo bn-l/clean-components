@@ -11,7 +11,8 @@ const config: StorybookConfig = {
         options: {
             builder: {
                 viteConfigPath: "./vite-storybook.ts"
-            }
+            },
+            strictMode: true,
         },
     },
     docs: {

@@ -1,28 +1,28 @@
 
-export interface MoonIconProps {
-    /**
-     * @default none
-     */
-    className?: string;
-    /**
-     * @default "black"
-     */
-    fill?: string;
-    /**
-     * @default "16px"
-     */
-    width?: string;
-    /**
-     * @default "16px"
-     */
-    height?: string;
-    /**
-     * @default "0 0 16 16"
-     */
-    viewBox?: string;
-}
+// export interface MoonIconProps {
+//     /**
+//      * @default none
+//      */
+//     className?: string;
+//     /**
+//      * @default "black"
+//      */
+//     fill?: string;
+//     /**
+//      * @default "16px"
+//      */
+//     width?: string;
+//     /**
+//      * @default "16px"
+//      */
+//     height?: string;
+//     /**
+//      * @default "0 0 16 16"
+//      */
+//     viewBox?: string;
+// }
 
-export default function MoonIcon(moonIconProps: MoonIconProps) {
+export default function MoonIcon(moonIconProps: React.CSSProperties) {
     moonIconProps = { 
         className: "", 
         fill: "black", 

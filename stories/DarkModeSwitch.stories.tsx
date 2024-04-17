@@ -29,8 +29,8 @@ const meta = {
                 type: "color",
             },
         },
-        sizeMultiple: {
-            control: { type: "range", min: 0.5, max: 5, step: 0.1 }, 
+        scale: {
+            control: { type: "range", min: 4, max: 50, step: 2 }, 
         },
     },
     // appears to be for generally applied / default args
