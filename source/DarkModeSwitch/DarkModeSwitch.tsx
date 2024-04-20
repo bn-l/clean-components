@@ -104,23 +104,32 @@ export interface DarkModeSwitchProps {
      * An object used to customise the components colors. By default it uses shades of light or dark to colorise the component so this can be safely ignored. If there are errors in the 
      * colors set here it will revert to default.
      */
-    colors?: DarkModeSwitchColors;
+    colors?: DarkModeSwitchColors
+    /**
+     * If set will use this to get and set state instead of its own internal getting and setter.
+     * Takes a tuple of the current state (which can be the strings "light or "dark") and a 
+     * function that takes that takes those strings to set state somewhere else.
+     * You can give it the return value of setState<"light" | "dark">("light").
+     */
+    stateManager?: [
+        Theme,
+        React.Dispatch<React.SetStateAction<Theme>>
+    ]
 }
 
 const localStorageKey = "darkmodeswitch-theme"
 
-function getTheme() {
+function getStartingTheme() {
     const localTheme = window.localStorage.getItem(localStorageKey);
     const mediaQueryDarkTheme = !!window?.matchMedia?.("(prefers-color-scheme:dark)")?.matches;
     
-    return localTheme
-        ? localTheme as Theme
-        : mediaQueryDarkTheme
-        ? Theme.Dark
-        : Theme.Light
+   if (localTheme === "light") return Theme.Light
+   else if (localTheme === "dark") return Theme.Dark
+   else if (mediaQueryDarkTheme) return Theme.Dark
+   else return Theme.Light
 }
 
-const startingTheme = getTheme();
+const startingTheme = getStartingTheme();
 
 /**
  * By default adds a "light" or "dark" color class name to the html element when the switch is 
@@ -130,7 +139,7 @@ const startingTheme = getTheme();
  *  - Listens for changes to the dark mode media query and responds (e.g. if the user's os changes
  *     the preference from light to dark at a certain time of day, the component will update).
  */
-export default function DarkModeSwitch({ lightColor, darkColor, onToggle, showIcon = true, setAddressBar = true, colors, scale = 16 }: DarkModeSwitchProps) {
+export default function DarkModeSwitch({ lightColor, darkColor, onToggle, showIcon = true, setAddressBar = true, colors, scale = 16, stateManager }: DarkModeSwitchProps) {
 
     lightColor = colord(lightColor).isValid() ? lightColor : "white";
     darkColor = colord(darkColor).isValid() ? darkColor : "black";
@@ -159,7 +168,9 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, showIc
         dropShadowDark = colord(darkColor).alpha(0.2).toHex(),
     } = colors ?? {};
 
-    const [theme, setTheme] = useState<Theme>(startingTheme);
+    // Argument of type 'Theme' is not assignable to parameter of type '("light" | "dark") & SetStateAction<Theme>'.
+
+    const [theme, setTheme] = stateManager ? stateManager : useState(startingTheme);
     
     const changeTheme: DarkModeSwitchProps["onToggle"] = onToggle ? onToggle : 
         (theme: Theme | null) => {
