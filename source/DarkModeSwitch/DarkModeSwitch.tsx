@@ -12,10 +12,7 @@ import Switch from "../Switch/Switch.tsx";
 extend([namesPlugin]);
 
 
-export enum Theme {
-    Dark = "dark",
-    Light = "light", 
-}
+export type Theme = "light" | "dark";
 
 export interface DarkModeSwitchColors {
     /**
@@ -123,10 +120,10 @@ function getStartingTheme() {
     const localTheme = window.localStorage.getItem(localStorageKey);
     const mediaQueryDarkTheme = !!window?.matchMedia?.("(prefers-color-scheme:dark)")?.matches;
     
-   if (localTheme === "light") return Theme.Light
-   else if (localTheme === "dark") return Theme.Dark
-   else if (mediaQueryDarkTheme) return Theme.Dark
-   else return Theme.Light
+   if (localTheme === "light") return "light"
+   else if (localTheme === "dark") return "dark"
+   else if (mediaQueryDarkTheme) return "dark"
+   else return "light"
 }
 
 const startingTheme = getStartingTheme();
@@ -174,7 +171,7 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, showIc
     
     const changeTheme: DarkModeSwitchProps["onToggle"] = onToggle ? onToggle : 
         (theme: Theme | null) => {
-            theme ??= Theme.Light;
+            theme ??= "light";
             setTheme(theme);
             const existingClases = document.documentElement.className.replace(/light|dark/gi, "").split(/\s+/g);
             existingClases.push(theme);
@@ -189,7 +186,7 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, showIc
 
         // Set up theme to change event
         const handleThemeChange = (event: MediaQueryListEvent) => {
-            changeTheme(event.matches ? Theme.Dark : Theme.Light);
+            changeTheme(event.matches ? "dark" : "light");
         };
         window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", handleThemeChange);
         return () => {
@@ -205,12 +202,12 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, showIc
         if (setAddressBar) {
 
             if (meta) {
-                meta.setAttribute("content", theme === Theme.Dark ? addressBarDark : addressBarLight);
+                meta.setAttribute("content", theme === "dark" ? addressBarDark : addressBarLight);
             }
             else {
                 const newMeta = document.createElement("meta");
                 newMeta.name = "theme-color";
-                newMeta.content = theme === Theme.Dark ? addressBarDark : addressBarLight;
+                newMeta.content = theme === "dark" ? addressBarDark : addressBarLight;
                 document.head.appendChild(newMeta);
             }
         }
@@ -220,22 +217,22 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, showIc
     let Icon: JSX.Element | null = null;
 
     if (showIcon) {
-        Icon = theme === Theme.Light ? 
+        Icon = theme === "light" ? 
             <MoonIcon fill={iconLightColor} className="" style={{height: "100%"}}/> : 
             <SunIcon fill={iconDarkColor} className="" style={{height: "100%"}}/>;
     }
 
     return (
         <Switch
-            checked={theme === Theme.Light}
+            checked={theme === "light"}
             scale={scale}
-            knobColor={theme === Theme.Light ? knobLightColor : knobDarkColor}
-            onToggle={() => changeTheme(theme === Theme.Light ? Theme.Dark : Theme.Light)}
+            knobColor={theme === "light" ? knobLightColor : knobDarkColor}
+            onToggle={() => changeTheme(theme === "light" ? "dark" : "light")}
             icon={Icon}
-            trackColor={theme === Theme.Light ? trackLightColor : trackDarkColor}
-            detailColor={theme === Theme.Light ? detailLightColor : detailDarkColor}
+            trackColor={theme === "light" ? trackLightColor : trackDarkColor}
+            detailColor={theme === "light" ? detailLightColor : detailDarkColor}
             ariaLabel="Switch to set light or dark theme"
-            dropShadowColor={theme === Theme.Light ? dropShadowLight : dropShadowDark}
+            dropShadowColor={theme === "light" ? dropShadowLight : dropShadowDark}
         />
     )
 }
