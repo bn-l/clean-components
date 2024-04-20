@@ -165,7 +165,6 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, showIc
         dropShadowDark = colord(darkColor).alpha(0.2).toHex(),
     } = colors ?? {};
 
-    // Argument of type 'Theme' is not assignable to parameter of type '("light" | "dark") & SetStateAction<Theme>'.
 
     const [theme, setTheme] = stateManager ? stateManager : useState(startingTheme);
     

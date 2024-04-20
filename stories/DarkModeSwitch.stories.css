@@ -15,6 +15,17 @@
     background-color: var(--bg-dark) !important;
 }
 
-:root:not(.dark) .DarkModeSwitchCanvas {
-    background-color: var(--bg-light) !important;
+#theme-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-family: Helvetica, sans-serif;
+    padding: 7px;
+    font-size: small;
+    color: #1C1924;
 }
+
+:root.dark #theme-label  {
+    color: #FBFAFF;
+}
+

@@ -1,6 +1,6 @@
 import DarkModeSwitch from "../source/DarkModeSwitch/DarkModeSwitch.tsx";
 import "./DarkModeSwitch.stories.css";
-
+import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // For testing. The testing from storybook (as "chromatic") does not seem better than vitest 
@@ -40,6 +40,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+
+
 // this could also be a template. See: https://storybook.js.org/docs/writing-stories/stories-for-multiple-components#creating-a-template-component
 export const Default: Story = {
     args: {
@@ -48,9 +50,13 @@ export const Default: Story = {
     },
     render: (args) => {
 
+        const [theme, setTheme] = useState<"light" | "dark">("light");
+
+
         const style = {
             "--bg-dark": args.darkColor,
             "--bg-light": args.lightColor,
+            "position": "relative",
         } as React.CSSProperties;
 
         return (
@@ -58,7 +64,8 @@ export const Default: Story = {
                 style={style} 
                 className="DarkModeSwitchCanvas"
             >
-                <DarkModeSwitch {...args} />
+                <div id="theme-label">{theme}</div>
+                <DarkModeSwitch {...args} stateManager={[theme, setTheme]} />
             </div>
         )
     }
