@@ -166,26 +166,29 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, showIc
     } = colors ?? {};
 
 
-    const [theme, setTheme] = stateManager ? stateManager : useState(startingTheme);
-    
-    const changeTheme: DarkModeSwitchProps["onToggle"] = onToggle ? onToggle : 
-        (theme: Theme | null) => {
-            theme ??= "light";
-            setTheme(theme);
+    const [theme, setTheme] = stateManager ? stateManager : useState<Theme>(startingTheme);
+
+    useEffect(() => {
+        if(onToggle) {
+            onToggle(theme);
+        }
+        else {
             const existingClases = document.documentElement.className.replace(/light|dark/gi, "").split(/\s+/g);
             existingClases.push(theme);
             document.documentElement.className = existingClases.join(" ").trim();
             // document.documentElement.className = theme;
             window.localStorage.setItem(localStorageKey, theme);
-        };            
-         
+        }
+
+    }, [theme]);
+            
     useEffect(() => {
 
-        changeTheme(startingTheme)
+        setTheme(startingTheme)
 
         // Set up theme to change event
         const handleThemeChange = (event: MediaQueryListEvent) => {
-            changeTheme(event.matches ? "dark" : "light");
+            setTheme(event.matches ? "dark" : "light");
         };
         window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", handleThemeChange);
         return () => {
@@ -226,7 +229,7 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, showIc
             checked={theme === "light"}
             scale={scale}
             knobColor={theme === "light" ? knobLightColor : knobDarkColor}
-            onToggle={() => changeTheme(theme === "light" ? "dark" : "light")}
+            onToggle={() => setTheme((theme: string) => theme === "light" ? "dark" : "light")}
             icon={Icon}
             trackColor={theme === "light" ? trackLightColor : trackDarkColor}
             detailColor={theme === "light" ? detailLightColor : detailDarkColor}

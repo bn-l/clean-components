@@ -1,6 +1,6 @@
 import DarkModeSwitch from "../source/DarkModeSwitch/DarkModeSwitch.tsx";
 import "./DarkModeSwitch.stories.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // For testing. The testing from storybook (as "chromatic") does not seem better than vitest 
@@ -52,6 +52,17 @@ export const Default: Story = {
 
         const [theme, setTheme] = useState<"light" | "dark">("light");
 
+        const toggleTheme = () =>  setTheme(theme => theme === "light" ? "dark" : "light");
+
+        useEffect(() => {
+            const handleKeyPress = (event: KeyboardEvent) => {
+                if (event.key === "t") {
+                    toggleTheme();
+                }
+            };
+            document.addEventListener("keypress", handleKeyPress);
+            return () => document.removeEventListener("keypress", handleKeyPress);
+        }, []);
 
         const style = {
             "--bg-dark": args.darkColor,
