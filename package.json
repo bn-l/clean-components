@@ -63,6 +63,7 @@
     "@vitest/coverage-v8": "^1.4.0",
     "badgen": "^3.2.3",
     "c8": "^9.1.0",
+    "colord": "^2.9.3",
     "esbuild": "^0.20.2",
     "eslint": "^8.57.0",
     "eslint-plugin-import": "^2.29.1",
@@ -73,6 +74,8 @@
     "eslint-plugin-typescript-sort-keys": "^3.2.0",
     "eslint-plugin-unicorn": "^52.0.0",
     "glob": "^10.3.12",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rimraf": "^5.0.5",
     "sinon": "^17.0.1",
     "storybook": "^8.0.8",
@@ -84,16 +87,16 @@
     "vite": "^5.2.0",
     "vite-plugin-dts": "^3.8.3",
     "vite-plugin-lib-inject-css": "^2.0.1",
+    "vite-plugin-static-copy": "^1.0.3",
     "vitest": "^1.4.0",
-    "zx": "^8.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "colord": "^2.9.3"
+    "zx": "^8.0.1"
   },
   "peerDependencies": {
+    "colord": "^2.9.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "colord": "^2.9.3"
+    "react-dom": "^18.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vim-wasm": "^0.0.13"
+  }
 }

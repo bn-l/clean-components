@@ -6,9 +6,11 @@ import { libInjectCss } from "vite-plugin-lib-inject-css"
 import { resolve, relative, extname, parse } from "node:path";
 import { fileURLToPath } from "node:url";
 
+
 // https://vitejs.dev/config/
 export default defineConfig({
     build: {
+        assetsInlineLimit: 0,
         copyPublicDir: false,
         minify: false,
         sourcemap: true,
