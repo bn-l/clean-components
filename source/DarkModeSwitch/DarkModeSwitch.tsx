@@ -116,7 +116,7 @@ export interface DarkModeSwitchProps {
 
 const localStorageKey = "darkmodeswitch-theme"
 
-function getStartingTheme() {
+export function getStartingTheme() {
     const localTheme = window.localStorage.getItem(localStorageKey);
     const mediaQueryDarkTheme = !!window?.matchMedia?.("(prefers-color-scheme:dark)")?.matches;
     
