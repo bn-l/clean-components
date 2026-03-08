@@ -22,8 +22,7 @@ jobs:
       - name: Set node version
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          registry-url: https://registry.npmjs.org/
+          node-version: 24
           cache: npm
 
       - name: Install
@@ -40,8 +39,6 @@ jobs:
 
       - name: Publish to npm
         run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ''
 
       # - name: Generate Changelog
       #   run: npx changelogithub
