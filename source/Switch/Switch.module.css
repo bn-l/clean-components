@@ -11,6 +11,13 @@
     font-size: var(--scale);
 }
 
+.switch:focus-within {
+    /* outline: 2px solid rgb(56, 171, 253); */
+
+    box-shadow: 0px 0px 0px 10px rgb(100 171 255);
+    border-radius: 21px;
+
+}
 
 .switchLabel {
     display: inline-block;
