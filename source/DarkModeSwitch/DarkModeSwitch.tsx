@@ -184,11 +184,11 @@ export default function DarkModeSwitch({ lightColor, darkColor, onToggle, showIc
             
     useEffect(() => {
 
-        setTheme(startingTheme)
-
         // Set up theme to change event
         const handleThemeChange = (event: MediaQueryListEvent) => {
-            setTheme(event.matches ? "dark" : "light");
+            const newTheme = event.matches ? "dark" : "light";
+            window.localStorage.setItem(localStorageKey, newTheme);
+            setTheme(newTheme);
         };
         window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", handleThemeChange);
         return () => {
